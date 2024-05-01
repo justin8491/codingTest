@@ -57,7 +57,7 @@ public class Report14_05 {
 //			jusArr.add(2, "");
 			// 돈 삽입
 
-			System.out.println("============================== 자판기 ==============================");
+			System.out.println("=============================== 자판기 ==============================");
 			System.out.println("1." + jusNameArr[0] + "(1600)" + "(" + (stockCount[0] != 0 ? stockCount[0] : "재고없음")
 					+ ")" + " 2." + jusNameArr[1] + "(1700)" + "(" + (stockCount[1] != 0 ? stockCount[1] : "재고없음") + ")"
 					+ " 3." + jusNameArr[2] + "(1200)" + "(" + (stockCount[2] != 0 ? stockCount[2] : "재고없음") + ")"
