@@ -6,52 +6,59 @@ public class ArrayTest_test3 {
 
 	public static void main(String[] args) {
 
-		// ÀÌ¸§°ú MBTI°¡ ¼øÂ÷ÀûÀ¸·Î ÀûÇôÀÖ´Â ¹è¿­
-		String[] name = { "¹ÚÁöÇı", "±èÁ¤Çö", "½Å¼Ò¿î", "À±Ã¤¿µ", "À±°¡À»", "ÀÌÁ¦Àº", "±èµµÇö", "±èÃ¶Çö", "±èÈ£Çö", "ÀåÇö¼¼", "À¯¾Æ¸§", "±Ã¼ºÈ£", "¹Ú¼ºÈ£",
-				"À¯Á¾Çö", "¾îÇÑ", "±èÇü¸ğ", "°­½ÂÇö", "Á¤À±ÈÖ", "Á¶¼º¹Î", "Á¶ÀçÇö" };
+		// ì´ë¦„ê³¼ MBTIê°€ ìˆœì°¨ì ìœ¼ë¡œ ì í˜€ìˆëŠ” ë°°ì—´
+		String[] name = { "ë°•ì§€í˜œ", "ê¹€ì •í˜„", "ì‹ ì†Œìš´", "ìœ¤ì±„ì˜", "ìœ¤ê°€ì„", "ì´ì œì€", "ê¹€ë„í˜„", "ê¹€ì² í˜„", "ê¹€í˜¸í˜„", "ì¥í˜„ì„¸", "ìœ ì•„ë¦„", "ê¶ì„±í˜¸", "ë°•ì„±í˜¸",
+				"ìœ ì¢…í˜„", "ì–´í•œ", "ê¹€í˜•ëª¨", "ê°•ìŠ¹í˜„", "ì •ìœ¤íœ˜", "ì¡°ì„±ë¯¼", "ì¡°ì¬í˜„" };
 		String str = "ENFP,INFJ,ESTP,ISTP,ISTJ,ESFJ,ISFP,INTP,INFP,ISTP,ISFP,ENFP,ISTJ,ISFJ,INFP,INTJ,ENFP,ESTP,ENFJ,ISFP";
 
-		// ¹Ù·Î À§ ¹®ÀÚ¿­ µû¿îÇ¥ ±âÁØ ¹è¿­·Î ³ª´²´ã±â
+		// ë°”ë¡œ ìœ„ ë¬¸ìì—´ ë”°ìš´í‘œ ê¸°ì¤€ ë°°ì—´ë¡œ ë‚˜ëˆ ë‹´ê¸°
 		String[] mbti = str.toString().split(",");
 
-		// ¼º°İ À¯Çü
+		// ì„±ê²© ìœ í˜•
 		String[] mbtiCategory = { "ENFJ", "ENFP", "ENTJ", "ENTP", "ESFJ", "ESFP", "ESTJ", "ESTP", "INFJ", "INFP",
 				"INTJ", "INTP", "ISFJ", "ISFP", "ISTJ", "ISTP" };
 		String[] mbtiAlpabat = { "E", "I", "N", "S", "F", "T", "P", "J" };
-		// ¼º°İ À¯Çüº° Ä«¿îÆ®
+		// ì„±ê²© ìœ í˜•ë³„ ì¹´ìš´íŠ¸
 		int[] mbtiCnt = new int[16];
+		int[] mbtiAlCnt = new int[8];
 		Scanner sc = new Scanner(System.in);
 
-		while (true) {
+		// ê¸°íƒ€ ë³€ìˆ˜
+		String temp = "";
 
-			System.out.println("=================MBTI=================");
-			System.out.println("1. E 2. I 3. MBTIº° »ç¶÷ ¼ö 4. ³ª¿Í °°Àº MBTI ");
-			System.out.print("¼±ÅÃÇÑ ¹øÈ£ : ");
+		while (true) {
+			System.out.println("\r\n" + "    â–ˆâ–ˆâ–ˆâ•—   â–ˆâ–ˆâ–ˆâ•—â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•— â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—â–ˆâ–ˆâ•—\r\n"
+					+ "    â–ˆâ–ˆâ–ˆâ–ˆâ•— â–ˆâ–ˆâ–ˆâ–ˆâ•‘â–ˆâ–ˆâ•”â•â•â–ˆâ–ˆâ•—â•šâ•â•â–ˆâ–ˆâ•”â•â•â•â–ˆâ–ˆâ•‘\r\n" + "    â–ˆâ–ˆâ•”â–ˆâ–ˆâ–ˆâ–ˆâ•”â–ˆâ–ˆâ•‘â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•”â•   â–ˆâ–ˆâ•‘   â–ˆâ–ˆâ•‘\r\n"
+					+ "    â–ˆâ–ˆâ•‘â•šâ–ˆâ–ˆâ•”â•â–ˆâ–ˆâ•‘â–ˆâ–ˆâ•”â•â•â–ˆâ–ˆâ•—   â–ˆâ–ˆâ•‘   â–ˆâ–ˆâ•‘\r\n" + "    â–ˆâ–ˆâ•‘ â•šâ•â• â–ˆâ–ˆâ•‘â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•”â•   â–ˆâ–ˆâ•‘   â–ˆâ–ˆâ•‘\r\n"
+					+ "    â•šâ•â•     â•šâ•â•â•šâ•â•â•â•â•â•    â•šâ•â•   â•šâ•â•\r\n" + "");
+			System.out.println("1. E 2. I 3. MBTIë³„ ì‚¬ëŒ ìˆ˜ 4. ë‚˜ì™€ ê°™ì€ MBTI ");
+			System.out.print("ì„ íƒí•œ ë²ˆí˜¸ : ");
 			String key = sc.next();
 			switch (key) {
-			case "1":// EÀÎ »ç¶÷
+			case "1":// Eì¸ ì‚¬ëŒ
 				for (int i = 0; i < mbti.length; i++) {
 					String tempStr = mbti[i].charAt(0) + "";
 					if (tempStr.equals("E")) {
-						System.out.println("'E'ÀÎ»ç¶÷ : " + name[i]);
+						System.out.println("'E'ì¸ì‚¬ëŒ : " + name[i]);
 					}
 				}
 				break;
-			case "2": // IÀÎ »ç¶÷
+			case "2": // Iì¸ ì‚¬ëŒ
 				for (int i = 0; i < mbti.length; i++) {
 					String tempStr = mbti[i].charAt(0) + "";
 					if (tempStr.equals("I")) {
-						System.out.println("'I'ÀÎ»ç¶÷ : " + name[i]);
+						System.out.println("'I'ì¸ì‚¬ëŒ : " + name[i]);
 					}
 				}
 				break;
-			case "3": // MBTIº° »ç¶÷ ¼ö
-				// À¯Çüº° »ç¶÷ ¼ö
-				System.out.println("==================================MBTI==================================");
+			case "3": // MBTIë³„ ì‚¬ëŒ ìˆ˜
+				// ìœ í˜•ë³„ ì‚¬ëŒ ìˆ˜
+
+				System.out.println("=====================================MBTI=====================================");
 				for (int i = 0; i < mbti.length; i++) {
 					for (int j = 0; j < mbtiCategory.length; j++) {
 						if (mbti[i].equals(mbtiCategory[j])) {
-							// ex) i¹øÀÎµ¦½º = ¹ÚÁöÇı¾¾·Î ¼º°İÀ¯Çü ¹è¿­À» µ¹·ÈÀ»¶§°°Àº °ªÀÌ¸é
+							// ex) ië²ˆì¸ë±ìŠ¤ = ë°•ì§€í˜œì”¨ë¡œ ì„±ê²©ìœ í˜• ë°°ì—´ì„ ëŒë ¸ì„ë•Œê°™ì€ ê°’ì´ë©´
 							mbtiCnt[j]++;
 						}
 					}
@@ -62,21 +69,57 @@ public class ArrayTest_test3 {
 					System.out.print(mbtiCnt[i] + "    ");
 				}
 				System.out.println();
-				// À¯Çü ¾ËÆÄºª º° »ç¶÷ ¼ö
+				// ìœ í˜• ì•ŒíŒŒë²³ ë³„ ì‚¬ëŒ ìˆ˜
 				System.out.println("------------------------------------------------------------------------");
-				for (int i = 0; i < mbti.length; i++) { // ¹İ ¼øÂ÷ ¼º°İÀ¯Çü
-					// ¹ÚÁöÇı ¾¾ = ENFP
-					for (int k = 0; k < mbti[i].length(); k++) { // ¹İ ¼øÂ÷ ¼º°İÀ¯Çü i ÀÎµ¦½º °ªÀÇ ¹®ÀÚ¿­ ±æÀÌ ¸¸Å­
+				for (int i = 0; i < mbti.length; i++) { // ë°˜ ìˆœì°¨ ì„±ê²©ìœ í˜•
+					// ë°•ì§€í˜œ ì”¨ = ENFP
+					for (int k = 0; k < mbti[i].length(); k++) { // ë°˜ ìˆœì°¨ ì„±ê²©ìœ í˜• i ì¸ë±ìŠ¤ ê°’ì˜ ë¬¸ìì—´ ê¸¸ì´ ë§Œí¼
 						// charAt
-						for (int j = 0; j < mbtiAlpabat.length; j++) { // ¾Ë¹Ùºª À¯Çü ¹è¿­
-
+						String alpaStr = mbti[i].charAt(k) + ""; // ë°˜ìˆœì°¨ ì„±ê²½ ìœ í˜•(ì¸ë±ìŠ¤).ì²«ë¬¸ìì—´(ë° ië¬¸ìì—´ê¸¸ì´ë§Œí¼);
+						for (int j = 0; j < mbtiAlpabat.length; j++) { // ì•Œë°”ë²³ ìœ í˜• ë°°ì—´
+							if (alpaStr.equals(mbtiAlpabat[j])) {
+								mbtiAlCnt[j]++;
+							}
 						}
+					}
+				}
+				for (int i = 0; i < 8; i++) {
+					System.out.print("| " + mbtiAlpabat[i] + " : " + mbtiAlCnt[i] + " |");
+				}
+				System.out.println();
+
+				System.out.println("=====================================MBTI=====================================");
+				break;
+			case "4": // ë‚˜ì™€ ê°™ì€ MBTI
+				// ì…ë ¥í•œ ì´ë¦„ê³¼ ê°™ì€ ì´ë¦„ ë°°ì—´ì˜ ì¸ë±ìŠ¤ ê°’ì´ ìˆëŠ”ì§€
+				// ì¸ë±ìŠ¤ê°€ ìˆìœ¼ë©´ ì´ë¦„ ì¸ë±ìŠ¤ê°’ì— í•´ë‹¹í•˜ëŠ” mbti ì¸ë±ìŠ¤ ê°’ì„ ì €ì¥
+				// mbti ê°’ìœ¼ë¡œ ê°™ì€ ë¬¸ìì—´ì´ ìˆìœ¼ë©´ ëª¨ë‘ ì¶œë ¥
+				System.out.println("=====================================MBTI=====================================");
+				System.out.print("ì´ë¦„ì„ ì…ë ¥í•˜ì—¬ ì£¼ì„¸ìš” : ");
+				key = sc.next();
+
+				int idx = -1;
+
+				for (int i = 0; i < name.length; i++) {
+					if (key.equals(name[i])) {
+						temp = mbti[i];
+						System.out.println(key + "ë‹˜ê³¼ ê°™ì€ MBTI");
+					}
+				}
+				int tempToInt = 0;
+				for (int j = tempToInt; j < mbti.length; j++) {
+					idx = temp.indexOf(mbti[j]);
+					if (idx != -1) {
+						System.out.println("<" + mbti[j] + "> " + name[j]);
+						tempToInt = idx + 1;
 					}
 
 				}
-				System.out.println("==================================MBTI==================================");
-				break;
-			case "4": // ³ª¿Í °°Àº MBTI
+
+				if (temp.equals("")) {
+					System.out.println("ì…ë ¥í•œ ì´ë¦„ì€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
+				}
+				System.out.println("=====================================MBTI=====================================");
 				break;
 			}
 
