@@ -3,7 +3,7 @@ package kr.co.check;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Report14_MoneyOutput {
+public class Report14_Array {
 
 	public static void main(String[] args) {
 		/*
