@@ -41,7 +41,7 @@ public class TestBoard {
 				member = new Member(name, age, gender);
 				writer = member.getName();
 				System.out.println();
-				
+
 				break;
 			case 2:
 				if (member != null) {
@@ -52,10 +52,10 @@ public class TestBoard {
 					title = sc.next();
 					System.out.println("게시글 내용 : ");
 					content = sc.next();
-					
+
 					// 작성자
 					board = new Board(boardNum, writer, title, content);
-					
+
 				} else {
 					System.out.println("회원가입을 먼저 진행해주세요.");
 				}
