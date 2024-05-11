@@ -49,7 +49,7 @@ public class Report14 {
 			jusArr.add(2, "");
 			// 돈 삽입
 
-			System.out.println("============================== 자판기 ==============================");
+			menuPrint();
 			System.out.println("1." + jusName1 + "(1600)" + "(" + (jStockCount != 0 ? jStockCount : "재고없음") + ")"
 					+ " 2." + jusName2 + "(1700)" + "(" + (sStockCount != 0 ? sStockCount : "재고없음") + ")" + " 3."
 					+ jusName3 + "(1200)" + "(" + (cStockCount != 0 ? cStockCount : "재고없음") + ")" + " 4.계산 5.금액 투입 ");
@@ -296,6 +296,10 @@ public class Report14 {
 
 		}
 
+	}
+
+	private static void menuPrint() {
+		System.out.println("============================== 자판기 ==============================");
 	}
 
 }
