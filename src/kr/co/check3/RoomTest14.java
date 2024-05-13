@@ -71,9 +71,9 @@ public class RoomTest14 {
 
 //		<----------- Update Wish List ----------->
 //		1. 관리자
-//		2. 방생성 메소드
+//		2. 방생성 로직 메서드로 만들 것 
 
-		// <--------- Start --------->x
+		// <--------- Start --------->
 		roomCount = roomCountMethod(roomCount);
 
 		// 해당 처리 메소드로 만들 것
