@@ -51,7 +51,7 @@ public class RoomTest14 {
 		// 선언부
 		int roomNum = 0; // 방 번호
 		int menuNum = 0; // 메뉴 번호
-		boolean stop = false;
+		boolean stop = false; // 예약시스템 종료 값
 		// String[] roomPwd = new String[roomCount];
 
 		// new 선언 >>
@@ -68,16 +68,49 @@ public class RoomTest14 {
 		// 객실 수
 		int roomCount = 0;
 		ArrayList<Object> roomList = new ArrayList<Object>();
-
+		Room room = new Room();
 //		<----------- Update Wish List ----------->
 //		1. 관리자
-//		2. 방생성 로직 메서드로 만들 것 
+//		2. 방 생성 로직 메서드로 만들 것 오늘 할 것 (완료)
 
 		// <--------- Start --------->
 		roomCount = roomCountMethod(roomCount);
 
 		// 해당 처리 메소드로 만들 것
-		// 아래와 같이 생성시 roomNum 은 roomList
+		;
+		roomList = roomCreat(roomCount, numOfRoom, price, tempToF, firstF, tempToFS, room, reserVation, roomPwd,
+				roomList);
+
+		while (!stop) {
+			menuNum = inforMsg();
+			switch (menuNum) {
+			case 1:
+//				roomCheckIn(room, roomPwd, roomNum);
+				roomCheckIn(roomList, roomNum); // New Ver.
+				break;
+			case 2:
+				// roomCheckOut(room, roomPwd);
+				roomCheckOut(roomList, roomNum); // New Ver.
+				break;
+			case 3:
+//				roomSearuch(room);
+				roomSearuch(roomList); // New Ver.
+				break;
+			case 1004:
+				adminMod();
+				break;
+			case 99:
+				stop = true;
+				System.out.println("예약 시스템 종료");
+				break;
+			}
+
+		}
+		// <--------- End --------->
+	}
+
+	private static ArrayList<Object> roomCreat(int roomCount, int numOfRoom, int price, int tempToF, int firstF,
+			String tempToFS, Room room, boolean reserVation, String roomPwd, ArrayList<Object> roomList) {
 		for (int i = 0; i < roomCount; i++) {
 
 			// 객실 인원 수 배치
@@ -105,70 +138,43 @@ public class RoomTest14 {
 				// i 값이 1~9 사이 일 때
 				tempToFS = firstF + "0" + tempToF;
 			}
-			Room room = new Room(Integer.parseInt(tempToFS), "스탠다드" + i, numOfRoom, reserVation, price, roomPwd);
+
+			room = new Room(Integer.parseInt(tempToFS), "스탠다드" + i, numOfRoom, reserVation, price, roomPwd);
 			roomList.add(room);
-		}
-
-		while (!stop) {
-			menuNum = inforMsg();
-			switch (menuNum) {
-			case 1:
-//				roomCheckIn(room, roomPwd, roomNum);
-				roomCheckIn(roomList, roomNum); // New Ver.
-				break;
-			case 2:
-				// roomCheckOut(room, roomPwd);
-				roomCheckOut(roomList, roomNum); // New Ver.
-				break;
-			case 3:
-//				roomSearuch(room);
-				roomSearuch(roomList); // New Ver.
-				break;
-			case 99:
-				stop = true;
-				System.out.println("예약 시스템 종료");
-				break;
-			}
 
 		}
-
+		return roomList;
 	}
-
-//	private static ArrayList<Object> roomCntToCreate(String roomPwd, boolean reserVation, int roomCount, int numOfRoom,
-//			int price, int tempToF, int firstF, String tempToFS, ArrayList<Object> roomList) {
-//		// 아래와 같이 생성시 roomNum 은 roomList
-//		for (int i = 0; i < roomCount; i++) {
+//	for (int i = 0; i < roomCount; i++) {
 //
-//			// 객실 인원 수 배치
-//			if (i % 3 == 0) { // 3의 배수 방번호 일 때
-//				numOfRoom = 3;
-//			} else if (i % 2 == 0) {
-//				numOfRoom = 2;
-//			}
-//			int tempToPrice = i % 10; // i 값 1의 자리만 빼기 0일때의 값 따로 처리
-//			// 가격
-//			if (tempToPrice != 0) {
-//				price += 10000;
-//			} else {
-//				price = 100000;
-//			}
-//
-//			// 층수
-//			tempToF = i % 10;
-//			if (tempToF == 0 && i != 0) {
-//				// i 값이 1~9 사이가 아닐때
-//				firstF++;
-//				tempToFS = (Integer.parseInt(tempToFS) + 1) + "";
-//				tempToFS = firstF + "0" + tempToF;
-//			} else if (tempToF != 0 || i == 0) {
-//				// i 값이 1~9 사이 일 때
-//				tempToFS = firstF + "0" + tempToF;
-//			}
-//			Room room = new Room(Integer.parseInt(tempToFS), "스탠다드" + i, numOfRoom, reserVation, price, roomPwd);
-//			roomList.add(room);
+//		// 객실 인원 수 배치
+//		if (i % 3 == 0) { // 3의 배수 방번호 일 때
+//			numOfRoom = 3;
+//		} else if (i % 2 == 0) {
+//			numOfRoom = 2;
 //		}
-//		return roomList;
+//		int tempToPrice = i % 10; // i 값 1의 자리만 빼기 0일때의 값 따로 처리
+//		// 가격
+//		if (tempToPrice != 0) {
+//			price += 10000;
+//		} else {
+//			price = 100000;
+//		}
 //
+//		// 층수
+//		tempToF = i % 10;
+//		if (tempToF == 0 && i != 0) {
+//			// i 값이 1~9 사이가 아닐때
+//			firstF++;
+//			tempToFS = (Integer.parseInt(tempToFS) + 1) + "";
+//			tempToFS = firstF + "0" + tempToF;
+//		} else if (tempToF != 0 || i == 0) {
+//			// i 값이 1~9 사이 일 때
+//			tempToFS = firstF + "0" + tempToF;
+//		}
+//
+//		room = new Room(Integer.parseInt(tempToFS), "스탠다드" + i, numOfRoom, reserVation, price, roomPwd);
+////		roomList.add(room);
 //	}
 
 	private static int roomCountMethod(int roomCount) {
@@ -252,7 +258,7 @@ public class RoomTest14 {
 	 */
 	private static void roomCheckIn(ArrayList<Object> roomList, int roomNum) {
 
-		System.out.print("방 번호를 입력해주세요 : ");
+		System.out.print("예약 할 방 번호를 입력해주세요 : ");
 		roomNum = sc.nextInt();
 		if (valueOf(roomList, roomNum)) { // 예약 가능 시
 			roomCISave(roomList, roomNum);
@@ -427,6 +433,9 @@ public class RoomTest14 {
 		return false;
 	}
 
+	/**
+	 * New 비밀번호가 맞으면 true : 비밀번호가 틀리면 false
+	 */
 	private static boolean pwdValueOf(String roomPwd, String pwd) {
 
 		if (roomPwd.equals(pwd)) {
@@ -434,6 +443,15 @@ public class RoomTest14 {
 		} else {
 			return false;
 		}
+	}
+
+	private static void adminMod() {
+		// 무엇이 가능할게 할 것인지
+		// 가격 변경
+		// 방 이름 변경
+		System.out.println("관리자 모드");
+		System.out.println();
+
 	}
 
 }
