@@ -35,15 +35,39 @@ public class RoomTest18_02 {
 	static Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) {
+
 		int[] room = new int[13];
 		String[] roomName = { "", "Vip", "스위트룸", "스위트룸2", "스위트룸3", "온돌방", "이글루", "로얄", "로얄2", "로얄3", "뚱이방", "짱구방",
 				"징징이방", "흰둥이방" };
 		int[] roomPrice = { 0, 200000, 120000, 120000, 100000, 80000, 75000, 150000, 130000, 130000, 300000, 320000,
 				250000, 200000 };
-		int[] roomPp = { 0, 1, 2, 2, 2, 4, 4, 2, 2, 2, 4, 6, 4, 2 };
-		int sel = 0;
+		int[] roomPp = { 0, 1, 2, 2, 2, 4, 4, 2, 2, 2, 4, 6, 4, 2 }; // 객실 인원
+
 		int[] reserNum = new int[13];
 
+		// new Create
+		int hotellInfo = 5;
+		String[][] hotellService = new String[5][room.length];
+
+		for (int i = 0; i < hotellInfo; i++) {
+			for (int j = 0; j < room.length; j++) {
+				if (i == 0) {
+					// 룸 예약 값 room
+					hotellService[i][j] = room[j] + ""; // int
+				} else if (i == 1) {
+					// 룸 이름 roomName
+					hotellService[i][j] = roomName[j];
+				} else if (i == 2) {
+					hotellService[i][j] = roomPrice[j] + ""; // int
+				} else if (i == 3) {
+					hotellService[i][j] = roomPp[j] + ""; // int
+				} else if (i == 4) {
+					hotellService[i][j] = reserNum[j] + ""; // int
+				}
+			}
+		}
+
+		int sel = 0;
 //		* - 초기화 메소드		
 		init(room);
 
@@ -66,7 +90,7 @@ public class RoomTest18_02 {
 //				1번 선택시 방 예약  /room[방번호 값] 1이면 예약불가 0이면 공실상태
 //				 * - 방예약 메소드 사용
 //				reserNum = reserNum;
-				reservation(room, reserNum);
+//				reservation(room, reserNum, hotellService);
 
 				break;
 
@@ -80,7 +104,7 @@ public class RoomTest18_02 {
 			case 3:
 //				3번 선택시 방 호실 확인
 //				 * - 방 보기 메소드
-				roomList(room);
+				roomList(hotellService);
 				break;
 
 			case 4:
@@ -89,13 +113,6 @@ public class RoomTest18_02 {
 		}
 
 	}
-
-//	private static int reserNum() {
-//		System.out.println("예약번호");
-//
-//		return scan.nextInt();
-//
-//	}
 
 	/**
 	 * 객실 정보
@@ -118,9 +135,10 @@ public class RoomTest18_02 {
 	}
 
 //	 * - 방 보기 메소드
-	private static void roomList(int[] room) {
-		for (int i = 1; i < room.length; i++) {
-			if (room[i] == 1) {
+	private static void roomList(String[][] hotellService) {
+		for (int i = 1; i < hotellService.length; i++) {
+
+			if (hotellService[0][i] == "1") {
 				System.out.println(i + "호실은 이미 예약된 방입니다..");
 			} else {
 				System.out.println(i + "호실은 예약이 가능합니다..!!!");
@@ -154,37 +172,6 @@ public class RoomTest18_02 {
 			}
 		}
 
-//		if (room[sel] == 1) {
-//			System.out.println("예약번호를 입력해주세요.");
-//
-//			int num = -1;
-//
-//			int tmp = scan.nextInt();
-//
-//			for (int i = 1; i < reserNum.length; i++) {
-//				if (reserNum[i] == tmp) {
-////					num = i;
-//					room[sel] = 0;
-//					System.out.println(sel + "호실을 취소하셨습니다.");
-//				} else {
-////					System.out.println("예약번호를 다시 입력해주세요.");
-//					continue;
-//				}
-//			}
-//
-////			if (num != -1) {
-////				System.out.println(sel + "호실을 취소하셨습니다.");
-////			} else {
-////				System.out.println("예약번호를 다시 입력해주세요.");
-////
-////			}
-//
-////			room[sel] = 0;
-//		} else {
-//			System.out.println("방 번호를 잘못 선택하셨습니다. 다시 한번 확인해주세요.");
-//		}
-
-//		return room;
 	}
 
 //	 * - 초기화 메소드
@@ -196,7 +183,7 @@ public class RoomTest18_02 {
 	}
 
 //	 * - 방예약 메소드 
-	private static void reservation(int[] room, int[] reserNum) {
+	private static void reservation(int[] room, int[] reserNum, String[][] hotelService) {
 
 		System.out.println("-----예약하실 방 번호를 입력해주세요-----");
 		int sel = scan.nextInt();
