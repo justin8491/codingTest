@@ -1,4 +1,4 @@
-package kr.co.check3;
+package kr.co.dong.check3;
 
 public class Room {
 	private int roomNum;

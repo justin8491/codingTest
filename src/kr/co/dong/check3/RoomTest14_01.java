@@ -1,9 +1,9 @@
-package kr.co.check3;
+package kr.co.dong.check3;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class RoomTest14_02 {
+public class RoomTest14_01 {
 
 	static Scanner sc = new Scanner(System.in);
 
@@ -300,7 +300,7 @@ public class RoomTest14_02 {
 
 	private static void adminMod() {
 		// 무엇이 가능할게 할 것인지
-		// 가격 변경
+		// 가격, 방 이름, 방 번호, 객실 인원
 		// 방 이름 변경
 		System.out.println("관리자 모드");
 		System.out.println();
