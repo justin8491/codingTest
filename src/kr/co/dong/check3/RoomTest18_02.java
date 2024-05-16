@@ -44,7 +44,7 @@ public class RoomTest18_02 {
 		int[] roomPp = { 0, 1, 2, 2, 2, 4, 4, 2, 2, 2, 4, 6, 4, 2 }; // 객실 인원
 
 		int[] reserNum = new int[13];
-
+		
 		// new Create
 		int hotellInfo = 5;
 		String[][] hotellService = new String[5][room.length];
