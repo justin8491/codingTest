@@ -1,5 +1,7 @@
 package kr.co.dong.bank;
 
+import java.util.Scanner;
+
 public class Bank implements AccountCoustomer {
 
 	// 은행 계좌 클래스
@@ -10,6 +12,7 @@ public class Bank implements AccountCoustomer {
 	private String accName; // 고객 이름
 	private int balance; // 잔액
 
+	static int serialNum = 0;
 //	String[] history = new String[100];
 
 	public Bank() {
@@ -21,26 +24,28 @@ public class Bank implements AccountCoustomer {
 		this.accPwd = accPwd;
 		this.accName = accName;
 		this.balance = balance;
+		serialNum++;
 	}
 
 	@Override
-	public int deposit(int amount) {
-		this.balance += amount;
-		return 1;
-	}
-
-	@Override
-	public int withdraw(int amount) throws Exception {
-		if (balance > amount) {
-			this.balance -= amount;
+	public Bank withdraw(Bank bank, int money, Scanner sc) throws Exception {
+		System.out.println("출금 할 금액을 입력해주세요 : ");
+		money = sc.nextInt();
+		if (bank != null) {
+			// 계좌 있는 경우
+			if (bank.getBalance() != 0 && bank.getBalance() > money) {
+				// 잔액 부족한데 출금 시
+				bank.setBalance(this.balance -= money);
+				System.out.println("출금 금액 : " + money);
+				System.out.println("출금 후 잔액 : " + bank.getBalance());
+			} else {
+				System.out.println("잔액이 부족합니다. 잔액 확인 후 다시 사용해주세요.");
+			}
 		} else {
-			throw new Exception("잔액이 부족합니다.");
+			// 계좌 없는 경우
+			System.out.println("계좌가 없습니다. 계좌 개설 후 이용 부탁드립니다.");
 		}
-		return amount;
-	}
-
-	public Bank tranSTHistory(Bank account) {
-		return null;
+		return bank;
 	}
 
 	public String getAccNum() {
@@ -87,15 +92,28 @@ public class Bank implements AccountCoustomer {
 		System.out.println("계좌잔액 : " + this.balance);
 	}
 
+
+
 	@Override
-	public AccountCoustomer tranSTHistory(AccountCoustomer account) {
-		// TODO Auto-generated method stub
-		return null;
+	public Bank deposit(Bank bank, int money, Scanner sc) {
+		if (bank != null) {
+			// 계좌 있는 경우
+			System.out.println("입금 할 금액을 입력해주세요 : ");
+			money = sc.nextInt();
+			bank.setBalance(bank.getBalance() + money);
+			System.out.println("입금 금액 : " + money);
+			System.out.println("입금 후 잔액 : " + bank.getBalance());
+		} else {
+			// 계좌 없는 경우
+			System.out.println("계좌가 없습니다. 계좌 개설 후 이용 부탁드립니다.");
+		}
+		return bank;
 	}
 
 	@Override
-	public boolean checkAccount(Account account, Bank bank) {
+	public void checkAccount(Account account, Bank bank) {
 		// TODO Auto-generated method stub
-		return false;
+		
 	}
+
 }

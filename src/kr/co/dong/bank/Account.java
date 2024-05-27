@@ -1,6 +1,6 @@
 package kr.co.dong.bank;
 
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class Account implements AccountCoustomer {
 
@@ -25,21 +25,15 @@ public class Account implements AccountCoustomer {
 		this.accPwd = accPwd;
 	}
 
-	@Override
-	public int deposit(int amount) {
-		this.balance += amount;
-		return 1;
-	}
-
-	@Override
-	public int withdraw(int amount) throws Exception {
-		if (balance > amount) {
-			this.balance -= amount;
-		} else {
-			throw new Exception("잔액이 부족합니다.");
-		}
-		return amount;
-	}
+//	@Override
+//	public int withdraw(int amount) throws Exception {
+//		if (balance > amount) {
+//			this.balance -= amount;
+//		} else {
+//			throw new Exception("잔액이 부족합니다.");
+//		}
+//		return amount;
+//	}
 
 	public String getAccPwd() {
 		return accPwd;
@@ -99,15 +93,20 @@ public class Account implements AccountCoustomer {
 //	}
 
 	@Override
-	public AccountCoustomer tranSTHistory(AccountCoustomer account) {
+	public void checkAccount(Account account, Bank bank) {
+		
+	}
+
+	@Override
+	public Bank withdraw(Bank bank, int money, Scanner sc) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean checkAccount(Account account, Bank bank) {
+	public Bank deposit(Bank bank, int money, Scanner sc) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 //	@Override

@@ -21,21 +21,21 @@ public abstract class Account_defult implements AccountCoustomer {
 		this.balance = balance;
 	}
 
-	@Override
-	public int deposit(int amount) {
-		this.balance += amount;
-		return 1;
-	}
+//	@Override
+//	public int deposit(int amount) {
+//		this.balance += amount;
+//		return 1;
+//	}
 
-	@Override
-	public int withdraw(int amount) throws Exception {
-		if (balance > amount) {
-			this.balance -= amount;
-		} else {
-			throw new Exception("잔액이 부족합니다.");
-		}
-		return amount;
-	}
+//	@Override
+//	public int withdraw(int amount) throws Exception {
+//		if (balance > amount) {
+//			this.balance -= amount;
+//		} else {
+//			throw new Exception("잔액이 부족합니다.");
+//		}
+//		return amount;
+//	}
 
 	public Account_defult tranSTHistory(Account_defult account) {
 		return null;
