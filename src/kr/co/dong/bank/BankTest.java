@@ -9,13 +9,12 @@ public class BankTest {
 	public static void main(String[] args) throws Exception {
 		int money = 0;
 		int key = 0;
-		Account account = null;
+		User account = null;
 		Bank bank = null;
-
 		processer(key, money, account, bank);
 	}
 
-	private static void processer(int key, int money, Account account, Bank bank) throws Exception {
+	private static void processer(int key, int money, User account, Bank bank) throws Exception {
 		boolean stop = false;
 		while (!stop) {
 			if (account != null) {
@@ -47,7 +46,6 @@ public class BankTest {
 					break;
 				case 2:
 					// 고객 정보 확인
-
 					checkAccount(account, bank);
 					break;
 				case 3:
@@ -59,42 +57,41 @@ public class BankTest {
 		}
 	}
 
-	private static void checkAccount(Account account, Bank bank) {
+	private static void checkAccount(User account, Bank bank) {
 //		향상 포문
 //		값 찾고 진행
-
 		System.out.print("찾을 계정 정보 이름 입력 : ");
 		String name = sc.next();
 		System.out.print("계정 비밀번호 입력 : ");
 		String pwd = sc.next();
 	}
 
-	private static Bank createBank(Account account, Bank bank) {
+	private static Bank createBank(User account, Bank bank) {
 		// 계좌번호 302- ~~~ 시작으로 오늘 날짜 값 일련번호로 처리
 		LocalDate currentDate = LocalDate.now();
 		System.out.println("오늘 날짜 : " + currentDate);
 		String str = (currentDate + "").replace("-", "").substring(4, 8);
 		String bankNum = "302-" + str + (bank.serialNum < 9 ? "-0" + bank.serialNum : "-" + bank.serialNum);
-		bank = new Bank(bankNum, account.getAccPwd(), account.getAccName(), 0);
+		bank = new Bank(bankNum, account.getPwd(), account.getName(), 0);
 		System.out.println("	계좌 개설 완료.");
 		return bank;
 	}
 
-	private static Account createAccount() {
+	private static User createAccount() {
 		// 이름 성별 잔액
 		String accName = "";
-		String gender = "";
+		String id = "";
 		String accPwd = "";
 		System.out.println("계정 가입");
 		System.out.print("이름을 입력해주세요 : ");
 		accName = sc.next();
-		System.out.print("성별을 입력해주세요 : ");
-		gender = sc.next();
+		System.out.print("아이디를 입력해주세요 : ");
+		id = sc.next();
 		System.out.print("비밀번호 4자리를 입력해주세요 : ");
 		accPwd = sc.next();
 
-		Account account = new Account(accName, gender, accPwd);
-
+//		Account account = new Account(accName, gender, accPwd);
+		User account = new User(id, accPwd);
 		return account;
 	}
 
@@ -102,7 +99,6 @@ public class BankTest {
 		System.out.println();
 		System.out.println("		행복은행에 오신 것을 환영합니다.");
 		System.out.println("	===================================");
-
 		System.out.println("	1. 고객등록 2. 고객정보 확인 3. 내계좌 확인");
 		System.out.println("	5. 종료");
 		System.out.println("	===================================");
@@ -110,10 +106,10 @@ public class BankTest {
 		return sc.nextInt();
 	}
 
-	private static int userInfo(Account account) {
+	private static int userInfo(User account) {
 		System.out.println("		행복은행에 오신 것을 환영합니다.");
 		System.out.println("	===================================");
-		System.out.println("	" + account.getAccName() + "님");
+		System.out.println("	" + account.getName() + "님");
 		System.out.println("	1. 계좌개설 2. 입금하기 3. 출금하기 4.계좌내역");
 		System.out.println("	5. 로그아웃");
 		System.out.println("	===================================");
