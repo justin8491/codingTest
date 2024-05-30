@@ -7,9 +7,9 @@ public class Monitor {
 	static int count = 0;
 
 	private String name;
-	String color;
-	String price;
-	String resol;
+	private String color;
+	private String price;
+	private String resol;
 	boolean onOff;
 
 	public Monitor() {
@@ -44,12 +44,57 @@ public class Monitor {
 	}
 
 //	getter/setter 구현
-	String getName() {
+	public String getName() {
 		return this.name;
 	}
 
-	void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Monitor [name=" + name + ", color=" + color + ", price=" + price;
+	}
+
+	public static int getCount() {
+		return count;
+	}
+
+	public static void setCount(int count) {
+		Monitor.count = count;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public String getResol() {
+		return resol;
+	}
+
+	public void setResol(String resol) {
+		this.resol = resol;
+	}
+
+	public boolean isOnOff() {
+		return onOff;
+	}
+
+	public void setOnOff(boolean onOff) {
+		this.onOff = onOff;
 	}
 
 }

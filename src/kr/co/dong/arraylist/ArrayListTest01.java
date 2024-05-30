@@ -1,6 +1,7 @@
 package kr.co.dong.arraylist;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ArrayListTest01 {
@@ -8,9 +9,9 @@ public class ArrayListTest01 {
 	public static void main(String[] args) {
 		List<String> list = new ArrayList<String>();
 
-		list.add("포도"); // idx 0
-		list.add("사과"); // idx 1
-		list.add("딸기"); // idx 2
+		list.add("포도"); // idx 0 List list[0] = "포도"
+		list.add("사과"); // idx 1 List list[1] = "사과"
+		list.add("딸기"); // idx 2 List list[2] = "딸기"
 
 		System.out.println("GET Start");
 		// 출력
@@ -51,7 +52,6 @@ public class ArrayListTest01 {
 				break;
 			}
 		}
-
 		if (idx == -1) {
 			System.out.println("찾는 데이터가없습니다.");
 		} else {
@@ -63,6 +63,13 @@ public class ArrayListTest01 {
 			for (String str : list) {
 				System.out.println(str);
 			}
+		}
+		
+		System.out.println("======================================");
+		Iterator<String> iter = list.iterator();
+		while (iter.hasNext()) {
+			String str = iter.next();
+			System.out.println(str);
 		}
 
 	}
