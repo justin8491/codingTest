@@ -1,7 +1,6 @@
 package kr.co.dong.arraylist;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import kr.co.dong.check5.Monitor;
@@ -15,7 +14,7 @@ public class ArrayListTest02 {
 		Monitor m3 = new Monitor("샘송3", "검은색", "25000");
 		Monitor m4 = new Monitor("샘송4", "검은색", "15000");
 
-//		list 추가
+		//list 추가
 		list.add(m1);
 		list.add(m2);
 		list.add(m3);
@@ -23,12 +22,14 @@ public class ArrayListTest02 {
 
 		for (Object obj : list) {
 			Monitor m = (Monitor) obj;
-			System.out.println("모니터 명 : " + m.getName() + " 색상 : " + m.getColor() + " 가격 : " + m.getPrice());
+			System.out.println("모니터 명 : " + m.getName() 
+			+ " 색상 : " + m.getColor() + " 가격 : " + m.getPrice());
 		}
-
+		System.out.println();
 		for (int i = 0; i < list.size(); i++) {
 			Monitor m = list.get(i);
-			System.out.println("모니터 명 : " + m.getName() + " 색상 : " + m.getColor() + " 가격 : " + m.getPrice());
+			System.out.println("모니터 명 : " + m.getName() 
+			+ " 색상 : " + m.getColor() + " 가격 : " + m.getPrice());
 		}
 
 	}

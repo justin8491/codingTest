@@ -18,10 +18,14 @@ public class ArrayListTest01 {
 //		System.out.println(list.get(0));
 //		System.out.println(list.get(1));
 //		System.out.println(list.get(2));
-
-		for (String str : list) {
-			System.out.println(str);
+		
+		for(int i = 0;i<list.size();i++) {
+			System.out.println(list.get(i));
 		}
+		
+//		for (String str : list) {
+//			System.out.println(str);
+//		}
 
 		// set
 		list.set(0, "오렌지");
@@ -34,12 +38,20 @@ public class ArrayListTest01 {
 		System.out.println(list.get(1));
 		System.out.println(list.get(2));
 		System.out.println(list.get(3));
-
-//		for (String str : list) {
-//			if (str.equals("딸기")) {
-//				list.remove(list.indexOf("딸기"));
-//			}
-//		}
+		
+		
+		// "딸기" 를 삭제하라
+		for (String str : list) {
+			if (str.equals("딸기")) {
+				list.remove(list.indexOf("딸기"));
+			}
+		}
+		
+		for(int i = 0;i < list.size();i++){
+			if(list.get(i).equals("딸기")) {
+				list.remove(i);
+			}
+		}
 
 		String delStr = "딸기";
 		System.out.println("딸기 Delete");
