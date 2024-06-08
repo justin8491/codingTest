@@ -14,7 +14,6 @@ import java.util.Scanner;
 
 public class RoomControl {
 	static Scanner sc = new Scanner(System.in);
-	static Room saveRoom = null;
 
 	public static void main(String[] args) {
 //		호텔룸(5개)의 정보를 보관 -> List		
