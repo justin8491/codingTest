@@ -4,6 +4,9 @@ public class Member {
 
 	private String uid;
 	private String pwd;
+	private String name;
+	private String gender;
+	private String email;
 
 	public Member() {
 	}
@@ -13,30 +16,15 @@ public class Member {
 		this.uid = uid;
 		this.pwd = pwd;
 	}
-
-	public String getUid() {
-		return uid;
-	}
-
-	public void setUid(String uid) {
-		this.uid = uid;
-	}
-
-	public String getPwd() {
-		return pwd;
-	}
-
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
-
-	public void memberList() {
-
-	}
-
+	
 	@Override
 	public String toString() {
-		return "Member [아이디=" + uid + ", 비밀번호=" + pwd + "]";
+		return "Member [uid=" + uid + ", pwd=" + pwd + ", name=" + name + ", gender=" + gender + ", email=" + email
+				+ "]";
 	}
+
+	
+
+	
 
 }

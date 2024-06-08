@@ -1,3 +1,4 @@
+
 package kr.co.dong.bank;
 
 import java.util.ArrayList;
@@ -10,7 +11,6 @@ public class UserTest {
 	static boolean isLogin = false;
 
 	public static void main(String[] args) {
-
 		int key = 0;
 		while (true) {
 			if (!isLogin) {

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class SelectTest {
 	static Connection conn = null;
+
 	static Statement stmt = null;
 	static ResultSet rs = null;
 	static Member member = null;
@@ -19,29 +20,15 @@ public class SelectTest {
 		// java 표준인 java.sql.Connection 클래스를 import해야 한다.
 
 		MemberService memberService;
+		DBConnection dbconn = null;
 
-		dbConnect();
+		conn = dbconn.getConnection();
+//		dbConnect();
 		try {
-
-			// 4. SQL 쿼리 작성
-			String sql = "SELECT UID, PWD FROM MEMBER";
-			// 5. 쿼리 수행
-			rs = stmt.executeQuery(sql);
-			// 6. 실행결과 출력하기
-			while (rs.next()) {
-
-				member = new Member(rs.getString("UID"), rs.getString("PWD"));
-				memberList.add(member);
-//				System.out.println("아이디 : " + uid + " 비밀번호 : " + pwd);
-
-			}
-
-			for (Member member : memberList) {
-				System.out.println(member);
-			}
+			selectAllMember();
 
 		} catch (SQLException e) {
-			System.out.println("에러: " + e);
+			System.out.println("쿼리 에러: " + e);
 		} finally {
 			try {
 				if (conn != null && !conn.isClosed()) {
@@ -59,6 +46,24 @@ public class SelectTest {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	private static void selectAllMember() throws SQLException {
+		stmt = conn.createStatement();
+		// 4. SQL 쿼리 작성
+		String sql = "SELECT UID, PWD FROM MEMBER";
+		// 5. 쿼리 수행
+		rs = stmt.executeQuery(sql);
+		// 6. 실행결과 출력하기
+		while (rs.next()) {
+			member = new Member(rs.getString("UID"), rs.getString("PWD"));
+			memberList.add(member);
+		}
+
+		for (Member member : memberList) {
+			System.out.println(member);
+		}
+
 	}
 
 	private static void dbConnect() throws ClassNotFoundException, SQLException {
