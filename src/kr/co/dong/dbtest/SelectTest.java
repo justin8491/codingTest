@@ -9,24 +9,23 @@ import java.util.ArrayList;
 
 public class SelectTest {
 	static Connection conn = null;
-
 	static Statement stmt = null;
 	static ResultSet rs = null;
 	static Member member = null;
 	static ArrayList<Member> memberList = new ArrayList<Member>();
-
+	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		// Connection 객체를 자동완성으로 import할 때는 com.mysql.connection이 아닌
 		// java 표준인 java.sql.Connection 클래스를 import해야 한다.
 
 		MemberService memberService;
 		DBConnection dbconn = null;
-
+		
 		conn = dbconn.getConnection();
 //		dbConnect();
 		try {
 			selectAllMember();
-
+		
 		} catch (SQLException e) {
 			System.out.println("쿼리 에러: " + e);
 		} finally {

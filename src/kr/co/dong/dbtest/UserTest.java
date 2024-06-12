@@ -38,7 +38,7 @@ public class UserTest {
 					break;
 				case 2:
 					// 회원가입
-					signUp();
+					signUp(selectUser);
 					break;
 				}
 			} else {
@@ -115,30 +115,49 @@ public class UserTest {
 		// 6. 실행결과 출력하기
 		while (rs.next()) {
 			selectUser = new Member(rs.getString("UID"), rs.getString("PWD"));
-
 		}
-//		userList.add(selectUser);
 		return selectUser;
 	}
 
-	static void signUp() throws SQLException {
+	static void signUp(Member selectUser) {
 		System.out.print("아이디를 입력 해 주세요 : ");
 		String uid = sc.next();
 		System.out.print("비밀번호를 입력 해 주세요 : ");
 		String pwd = sc.next();
-		String sql = "INSERT INTO MEMBERS VALUES(?,?)";
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, uid);
-		pstmt.setString(2, pwd);
 
-//		System.out.print("이름 입력 해 주세요 : ");
-//		String name = sc.next();
-		int result = pstmt.executeUpdate();
+		try {
+			pstmt = conn.prepareStatement("select * from MEMBERS where uid = ?");
+			pstmt.setString(1, uid);
+			pstmt.executeQuery();
+			try {
+				while (rs.next()) {
+					selectUser = new Member(rs.getString("UID"), rs.getString("PWD"));
+				}
+			} catch (NullPointerException e) {
+				System.err.println("이미 존재하는 아이디 입니다.");
+			}
+		} catch (SQLException e) {
+			System.out.println("처음으로 돌아갑니다.");
+		}
+
+		int result = 0;
+
+		try {
+			pstmt = conn.prepareStatement("INSERT INTO MEMBERS VALUES(?,?)");
+			pstmt.setString(1, uid);
+			pstmt.setString(2, pwd);
+			result = pstmt.executeUpdate();
+			System.out.println("Result : " + result);
+		} catch (SQLException e) {
+			System.out.println("처음으로 돌아갑니다.");
+		}
+
 		if (result == 1) {
 			System.out.println("회원가입 성공");
 		} else {
-			System.out.println("회원가입 실패");
+			System.err.println("회원가입 실패");
 		}
+		System.out.println();
 
 //		userList.add(user);
 	}
