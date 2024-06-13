@@ -114,7 +114,8 @@ public class UserTest {
 		rs = stmt.executeQuery(sql);
 		// 6. 실행결과 출력하기
 		while (rs.next()) {
-			selectUser = new Member(rs.getString("UID"), rs.getString("PWD"));
+			selectUser = new Member(rs.getString("UID"), rs.getString("PWD"), rs.getString("NAME"),
+					rs.getString("GENDER"), rs.getString("EMAIL"));
 		}
 		return selectUser;
 	}
@@ -124,6 +125,12 @@ public class UserTest {
 		String uid = sc.next();
 		System.out.print("비밀번호를 입력 해 주세요 : ");
 		String pwd = sc.next();
+		System.out.print("이름을 입력 해 주세요 : ");
+		String name = sc.next();
+		System.out.print("성별을 입력 해 주세요 : ");
+		String gender = sc.next();
+		System.out.print("이메일을 입력 해 주세요 : ");
+		String email = sc.next();
 
 		try {
 			pstmt = conn.prepareStatement("select * from MEMBERS where uid = ?");
@@ -143,9 +150,12 @@ public class UserTest {
 		int result = 0;
 
 		try {
-			pstmt = conn.prepareStatement("INSERT INTO MEMBERS VALUES(?,?)");
+			pstmt = conn.prepareStatement("INSERT INTO MEMBERS VALUES(?,?,?,?,?)");
 			pstmt.setString(1, uid);
 			pstmt.setString(2, pwd);
+			pstmt.setString(3, name);
+			pstmt.setString(4, gender);
+			pstmt.setString(5, email);
 			result = pstmt.executeUpdate();
 			System.out.println("Result : " + result);
 		} catch (SQLException e) {

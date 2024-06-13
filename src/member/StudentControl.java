@@ -63,7 +63,6 @@ public class StudentControl {
 		case "2":
 			System.out.print("학번 입력 : ");
 			etc = sc.next();
-
 			etcStudent.memberNumPrint(searchStudents(etc), students);
 			break;
 		case "3":
