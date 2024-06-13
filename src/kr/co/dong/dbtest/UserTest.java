@@ -68,6 +68,9 @@ public class UserTest {
 		System.out.println("=====================");
 		System.out.println("아이디 : " + stionUser.getUid());
 		System.out.println("비밀번호 : " + stionUser.getPwd());
+		System.out.println("이름 : " + stionUser.getName());
+		System.out.println("성별 : " + stionUser.getGender());
+		System.out.println("이메일 : " + stionUser.getEmail());
 		System.out.println("=====================");
 
 	}
