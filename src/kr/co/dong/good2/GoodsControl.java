@@ -22,45 +22,45 @@ public class GoodsControl {
 
 //	2. 상품추가  (추가정보입력부분)
 	public void insert(Bean g) {
-		int r = gservice.insert(g);
+//		int r = gservice.insert(g);
 
-		if (r > 0) {
-			System.out.println("상품 정보 추가 완료");
-		} else {
-			gmsg.goodErrorMsg("insert");
-		}
+//		if (r > 0) {
+//			System.out.println("상품 정보 추가 완료");
+//		} else {
+//			gmsg.goodErrorMsg("insert");
+//		}
 	}
 
 //	3. 상품 수정
 	public void update(Bean gnext, int gid) {
-		Bean gp = gservice.selectOne(gid);
+//		Bean gp = gservice.selectOne(gid);
 
-		if (gp == null) { // 없으면 되돌아가~~
-			gmsg.goodErrorMsg("selectOne");
-			return;
-		}
-
-		gmsg.goodsView(gp);
-
-		gnext.setGid(gid);
-		int r = gservice.update(gnext);
-
-		if (r > 0) {
-			System.out.println("상품 정보 수정 완료");
-		} else {
-			gmsg.goodErrorMsg("update");
-		}
+//		if (gp == null) { // 없으면 되돌아가~~
+//			gmsg.goodErrorMsg("selectOne");
+//			return;
+//		}
+//
+//		gmsg.goodsView(gp);
+//
+//		gnext.setGid(gid);
+//		int r = gservice.update(gnext);
+//
+//		if (r > 0) {
+//			System.out.println("상품 정보 수정 완료");
+//		} else {
+//			gmsg.goodErrorMsg("update");
+//		}
 	}
 
 //	4. 상품번호 gid로 상품 조회
 	public void selectOne(int gid) {
-		Bean g = gservice.selectOne(gid);
-
-		if (g == null) {
-			gmsg.goodErrorMsg("selectOne");
-		} else {
-			gmsg.goodsView(g);
-		}
+//		Bean g = gservice.selectOne(gid);
+//
+//		if (g == null) {
+//			gmsg.goodErrorMsg("selectOne");
+//		} else {
+//			gmsg.goodsView(g);
+//		}
 	}
 	
 	public static void main(String[] args) {

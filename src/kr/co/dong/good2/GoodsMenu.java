@@ -54,3 +54,4 @@ public class GoodsMenu {
 		System.out.print("상품 번호 입력 : ");
 		return Integer.parseInt(sc.nextLine());
 	}
+}

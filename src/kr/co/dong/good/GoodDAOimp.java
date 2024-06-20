@@ -41,7 +41,6 @@ public class GoodDAOimp implements GoodDAO {
 	@Override
 	public int insert() {
 		good = new Bean();
-		System.out.println("상품추가");
 		try {
 			good = gm.add();
 			pstmt = conn.prepareStatement("INSERT INTO goods VALUES(?, ?, ?, ?, ?)");
@@ -61,7 +60,6 @@ public class GoodDAOimp implements GoodDAO {
 	@Override
 	public int update() {
 		good = new Bean();
-		System.out.println("상품수정");
 		try {
 			int getId = gm.GoodsId();
 			good = gm.add();
@@ -76,7 +74,6 @@ public class GoodDAOimp implements GoodDAO {
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			gMsg.goodErrorMsg(e);
-			e.printStackTrace();
 		}
 
 		return result;
@@ -104,7 +101,6 @@ public class GoodDAOimp implements GoodDAO {
 
 	@Override
 	public int delete(int gid) {
-		System.out.println("상품삭제");
 		try {
 			pstmt = conn.prepareStatement("delete from goods where gid = ?");
 			pstmt.setInt(1, gid);
@@ -120,12 +116,10 @@ public class GoodDAOimp implements GoodDAO {
 	}
 
 	public void prnState() {
-		//
 		System.out.println("동작을 진행합니다........");
 		try {
 			Thread.sleep(1000); // 1초간 재우기
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
