@@ -1,0 +1,4 @@
+6월 13, 2024 5:54:14 오후 log.MyLogger log
+WARNING: 이거 어떻게 나오냐 ? 
+6월 13, 2024 5:54:14 오후 log.MyLogger log
+SEVERE: 이거 어떻게 나오냐 ? 

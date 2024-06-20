@@ -1,7 +1,10 @@
 package kr.co.dong.bank;
 
-public class AppCDInfo implements Lendable {
+import java.lang.System.Logger;
+import java.lang.System.LoggerFinder;
 
+public class AppCDInfo implements Lendable {
+	
 	public static void main(String[] args) {
 
 	}
@@ -13,6 +16,7 @@ public class AppCDInfo implements Lendable {
 
 	@Override
 	public void checkIn() {
+		
 		System.out.println("체크인합니다.");
 		
 	}

@@ -160,7 +160,6 @@ public class UserTest {
 			pstmt.setString(4, gender);
 			pstmt.setString(5, email);
 			result = pstmt.executeUpdate();
-			System.out.println("Result : " + result);
 		} catch (SQLException e) {
 			System.out.println("처음으로 돌아갑니다.");
 		}
@@ -172,7 +171,6 @@ public class UserTest {
 		}
 		System.out.println();
 
-//		userList.add(user);
 	}
 
 }
