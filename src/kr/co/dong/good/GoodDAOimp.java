@@ -86,6 +86,7 @@ public class GoodDAOimp implements GoodDAO {
 			pstmt = conn.prepareStatement("select * from goods where gid = ?");
 			pstmt.setInt(1, getId);
 			prnState();
+			
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {

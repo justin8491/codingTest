@@ -7,7 +7,7 @@ public class GoodsControl {
 	static GoodServiceImp gs = new GoodServiceImp();
 	static GoodsMenu gm = new GoodsMenu();
 	static GoodsMsg gMsg = new GoodsMsg();
-
+	
 	public static void main(String[] args) {
 		boolean stop = false;
 		String key = "";
@@ -37,6 +37,7 @@ public class GoodsControl {
 				break;
 			case "6":
 				// 시스템 종료
+				
 				break;
 			}
 		}
